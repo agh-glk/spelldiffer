@@ -1,0 +1,4 @@
+spelldiffer
+===========
+
+Spellchecking errors finder
