@@ -58,8 +58,6 @@ if __name__ == "__main__":
 
             if elem.tag.endswith('}title'):
                 last_title = elem.text
-                print "##", last_title
-
 
             if elem.tag.endswith('}page'):
                     last = None
@@ -68,12 +66,10 @@ if __name__ == "__main__":
                 if last is None:
                     last = elem
                 else:
-                    print "+",
                     if last.text and elem.text:
                         corrections = finder.find(last.text, elem.text)
                         if corrections:
-                            print "#", last_title
-                            print "\n".join(map(lambda (w,c): u'%s, %s' % (w, c), corrections))
+                            print u"\n".join(map(lambda (w,c): u'%s, %s' % (w, c), corrections)).encode('utf-8')
 
     else:
         corrections = finder.find(options.before.read().decode('utf-8'), options.after.read().decode('utf-8'))
